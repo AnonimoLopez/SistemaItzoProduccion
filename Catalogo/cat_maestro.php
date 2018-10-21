@@ -15,7 +15,8 @@ v<?php
 
 
 
- <label for="form-field-mask-2">Nombre</label>
+
+ <label for="form-field-mask-2">Nombre1</label>
 <div class="input-group col-sm-8">
  
   	<span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
