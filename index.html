@@ -1,0 +1,107 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+	 <link rel="stylesheet" href="static/bootstrap/dist/css/bootstrap.min.css"  type='text/css'>
+    <link rel="stylesheet" href="static/bootstrap/dist/css/bootstrap-theme.min.css"type='text/css'>
+    <link rel="stylesheet" href="static/jquery2/css/base/jquery-ui-1.9.2.custom.css" type='text/css'>
+    <link rel="stylesheet" href="static/notificaciones/build/toastr.min.css" type='text/css'>
+
+
+
+  <script src="static/jquery3/jquery-3.3.1.js" type='text/javascript'></script>
+   <script src="static/jquery2/js/jquery-ui-1.9.2.custom.min.js" type='text/javascript' ></script>
+<script src="static/angular/angular.min.js" type='text/javascript' ></script>
+<script src="static/notificaciones/build/toastr.min.js" type='text/javascript' ></script>
+<script src="static/bootstrap/dist/js/bootstrap.min.js" type='text/javascript'></script>
+   
+
+
+</head>
+<style>
+    .wrapper {
+	margin-top: 80px;
+	margin-bottom: 20px;
+}
+
+.form-signin {
+  opacity: 0.9;
+  max-width: 420px;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  background-color: #eee;
+  border: 3px dotted rgba(0,0,0,0.1);
+  }
+
+.form-signin-heading {
+  text-align:center;
+  margin-bottom: 30px;
+}
+
+.form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+}
+
+input[type="text"] {
+   opacity: 0.7;
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.colorgraph {
+  height: 7px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+body{
+    background:  	#87CEFA;
+}
+body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background: url(img/fondo.png) no-repeat center center fixed;
+    background-size: 100% 100%;
+}
+</style>
+<body>
+<div class = "container">
+	<div class="wrapper">
+		<form action="login.php" method="post" name="Login_Form" class="form-signin">
+		    <h3 class="form-signin-heading">Inicia Sección</h3>
+			  <hr class="colorgraph"><br>
+
+			  <input type="text" class="form-control" name="user" placeholder="Username" required="" autofocus="" />
+			  <input type="password" class="form-control" name="pass" placeholder="Password" required=""/>
+
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>
+		</form>
+	</div>
+</div>
+
+<div ng-app="">
+
+<p>Name: <input type="text" ng-model="name"></p>
+<p>You wrote: {{ name }}</p> 
+
+</div>
+
+  </body>
+
+</html>
