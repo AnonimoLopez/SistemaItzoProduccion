@@ -96,6 +96,14 @@ $menu .= '</li>';
 		<![endif]-->
 		<link rel="stylesheet" href="static/assets/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="static/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="static/CSS/style.css" />
+
+
+			<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+		
+			<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+
 
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="static/assets/css/ace-ie.min.css" />
@@ -126,6 +134,7 @@ $menu .= '</li>';
 		<link rel="stylesheet" href="static/assets/css/daterangepicker.min.css" />
 		<link rel="stylesheet" href="static/assets/css/bootstrap-datetimepicker.min.css" />
 		<link rel="stylesheet" href="static/assets/css/bootstrap-colorpicker.min.css" />
+
 		<!-- text fonts -->
 		<!-- ace styles -->
 
@@ -659,6 +668,23 @@ $menu .= '</li>';
 		<!--[if lte IE 8]>
 		  <script src="static/assets/js/excanvas.min.js"></script>
 		<![endif]-->
+
+	    <script src="static/assets/js/jquery-ui.custom.min.js"></script>
+		<script src="static/assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="static/assets/js/chosen.jquery.min.js"></script>
+		<script src="static/assets/js/spinbox.min.js"></script>
+		<script src="static/assets/js/bootstrap-datepicker.min.js"></script>
+		<script src="static/assets/js/bootstrap-timepicker.min.js"></script>
+		<script src="static/assets/js/moment.min.js"></script>
+		<script src="static/assets/js/daterangepicker.min.js"></script>
+		<script src="static/assets/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="static/assets/js/bootstrap-colorpicker.min.js"></script>
+		<script src="static/assets/js/jquery.knob.min.js"></script>
+		<script src="static/assets/js/autosize.min.js"></script>
+		<script src="static/assets/js/jquery.inputlimiter.min.js"></script>
+		<script src="static/assets/js/jquery.maskedinput.min.js"></script>
+		<script src="static/assets/js/bootstrap-tag.min.js"></script>
+
 
 		<script src="static/assets/js/jquery-ui.custom.min.js"></script>
 		<script src="static/assets/js/jquery.ui.touch-punch.min.js"></script>

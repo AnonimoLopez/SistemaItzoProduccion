@@ -33,8 +33,7 @@ $result = $funciones->guardar("pXCALIFICACIONES_ESTADIA_G",$arrayName);
 
 
 if ($result == true){
-$tabla = $funciones->tabla("Calificaciones_","pCALIFICACIONES_ALTA_B","MAESTRO,ALUMNO,CARRERA,GRUPO,PROYECTO,RESPONSABLE");
-
+	$tabla = $funciones->tabla("Calificaciones_","pCALIFICACIONES_ALTA_B","MAESTRO,ALUMNO,CARRERA,GRUPO,PROYECTO,RESPONSABLE");
 	echo $tabla;
 } 
 ?>

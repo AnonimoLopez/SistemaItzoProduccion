@@ -16,7 +16,6 @@ function go(url) {
     //}    
 }
 
-function x() {}
 
 function Asyc(vUrl, vData, vidDiv) {
     $.ajax({
@@ -81,7 +80,76 @@ function AsycWindow(vUrl, vData, vidDiv) {
 }
 
 
-function save(vUrl, vData, vidDiv) {
+function save_r(vUrl, vData, id_form, key, id_resul, extra = '') {
+
+     $.ajax({
+        // la URL para la petición
+        url: vUrl,
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        data: vData, //{ id : 123 },
+        // especifica si será una petición POST o GET
+        type: 'POST',
+        // el tipo de información que se espera de respuesta
+        dataType: 'Html',
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function(response) {
+                if(!isNaN(response.trim())){
+                    toastr['info']('Se ingreso/Actualizo Correctamente el Registro. ID: ' + response.trim());
+                    document.getElementById(id_form).value = response.trim();
+                    vData = {'proceso' : key, 'extra' : extra}
+                    Asyc(vUrl,vData, id_resul);
+                }else{
+                    toastr['error'](response);
+                }        
+        },
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function(xhr, status) {
+            alert('Disculpe, existió un problema');
+        },
+        // código a ejecutar sin importar si la petición falló o no
+        complete: function(xhr, status) {
+            //alert('Petición realizada');
+        }
+    });
+}
+
+
+
+function guardar(vUrl, vData, vidDiv) {
+    $.ajax({
+        // la URL para la petición
+        url: vUrl,
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        data: vData, //{ id : 123 },
+        // especifica si será una petición POST o GET
+        type: 'POST',
+        // el tipo de información que se espera de respuesta
+        dataType: 'Html',
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function(response) {
+           return response;
+        },
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function(xhr, status) {
+            alert('Disculpe, existió un problema');
+        },
+        // código a ejecutar sin importar si la petición falló o no
+        complete: function(xhr, status) {
+            //alert('Petición realizada');
+        }
+    });
+}
+
+
+function buscar(vUrl, vData, vidDiv) {
     $.ajax({
         // la URL para la petición
         url: vUrl,
@@ -96,6 +164,8 @@ function save(vUrl, vData, vidDiv) {
         // la respuesta es pasada como argumento a la función
         success: function(response) {
             //mostramos salida del PHP
+            jQuery("#" + vidDiv).html(response);
+            $('#usertable').dataTable();
         },
         // código a ejecutar si la petición falla;
         // son pasados como argumentos a la función

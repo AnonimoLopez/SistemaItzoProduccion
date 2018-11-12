@@ -159,9 +159,44 @@ class DataBase
         $stmt1      = "EXEC  " . $sProcedimiento . " " . $sWhere;
         $this->stmt = sqlsrv_query($this->link, $stmt1);
         if ($this->stmt === false) {
-            die(print_r(sqlsrv_errors(), true));
+            echo "Error";
+            #die(print_r(sqlsrv_errors(), true));
         }
         return $this->stmt;
+    }
+
+    public function ejecutar_devuelve_id($sProcedimiento, $param, $devuelve)
+    {
+        $query       = "EXEC ". $sProcedimiento . " ";
+        $parametros2 = $param;
+        $limitador   = true;
+        $devuelve_id = $devuelve;
+        foreach ($parametros2 as $key => $value) {
+            $coma = ($limitador) ? '' : ',';
+            $query .= $coma . $key . " = ? ";
+            $valor[$key] = $value;
+
+            $tipo = ($devuelve_id == $key) ? SQLSRV_PARAM_OUT : SQLSRV_PARAM_IN;
+            if ($limitador) {
+                $params = array(array(&$valor[$key], $tipo));
+            } else {
+                $tkey = array(&$valor[$key], $tipo);
+                array_push($params, $tkey);
+            }
+            $limitador = false;
+        }
+        $stmt2 = sqlsrv_prepare($this->link, $query, $params);
+        if (!$stmt2) {
+            echo "Error de SQL PREPARE2";
+            print_r(sqlsrv_errors());
+        }
+        $result = sqlsrv_execute($stmt2);
+        if (!$result) {
+            echo "Error de ejecucion";
+            print_r(sqlsrv_errors());
+        }
+        sqlsrv_next_result($stmt2);
+        return $valor[$devuelve_id];
     }
 
     /**

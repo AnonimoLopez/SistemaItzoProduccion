@@ -1,0 +1,22 @@
+.pDelete{
+	text-align: center;
+}
+
+
+.iDelete{
+	color:red; 
+	width:auto; 
+	height:auto;
+	font-size: 160%;
+}
+
+
+.pSave{
+	text-align: center;
+}
+
+.iSave{
+	color:red; 
+    font-size: 160%;
+}
+

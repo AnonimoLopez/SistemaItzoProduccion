@@ -16,8 +16,8 @@ class Principal
     {
         $sql = ' <div class="form-group">
    <label for="' . $id . '">' . $texto . '</label>
-   <select class="form-control" id="' . $id . '">';
-
+   <select class="form-control" id="' . $id . '" onchange="onChangeV(this.id,this.value)" >';
+   $sql .= "<option>SELECCIONAR</option>";
         define('CHARSET', 'UTF-8');
         header('Content-type: text/html; charset=' . CHARSET);
         $stmt1         = "execute " . $nombre_Procedimiento;
@@ -45,17 +45,27 @@ class Principal
         return $result;
     }
 
+    public function guardar_devuelve_id($nombre_Procedimiento, $parametros, $devuelve_id)
+    {
+        $stmt1         = $nombre_Procedimiento;
+        $stmt1Prepared = sprintf($stmt1, "CURRENT_DATE");
+        $bd            = DataBase::getInstance();
+        $result        = $bd->ejecutar_devuelve_id($stmt1, $parametros, $devuelve_id);
+        return $result;
+    }
+
     public function LlenarSelect2($nombre_Procedimiento, $value, $descripcion, $id, $texto, $parametros)
     {
         $sql = ' <div class="form-group">
    <label for="' . $id . '">' . $texto . '</label>
-   <select class="form-control" id="' . $id . '">';
+   <select class="form-control" id="' . $id . '" onchange="onChangeV(this.id,this.value)">';
+   $sql .= "<option>SELECCIONAR</option>";
         $stmt1Prepared = sprintf($nombre_Procedimiento, "CURRENT_DATE");
         $bd            = DataBase::getInstance();
         $result        = $bd->ejecutar2($stmt1Prepared, $parametros);
         if ($result) {
             while ($fila = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
-                echo iconv('UTF-8', '', $fila[$descripcion]);
+                #echo iconv('UTF-8', '', $fila[$descripcion]);
                 $sql .= "<option value='" . $this->encriptar($fila[$value]) . "'>" . $fila[$descripcion] . "</option>";
             }
         }
@@ -100,20 +110,21 @@ class Principal
          session_start();
     }
 
-    public function tabla($id_tabla, $procedimientos, $columnas)
+    public function tabla($id_tabla, $procedimientos, $columnas, $parametros='NOT')
     {
         mb_http_output('UTF-8');
         $rows1 = '<table class="table table-hover"  id="usertable" >';
         define('CHARSET', 'UTF-8');
         header('Content-Type:text/html; charset=utf-8');
-        $stmt1         = "execute " . $procedimientos;
+        $stmt1         = $procedimientos . " ";
         $stmt1Prepared = sprintf($stmt1, "CURRENT_DATE");
         $bd            = DataBase::getInstance();
-        #$bd->set_charset("utf8");
-        $result = $bd->ejecutar($stmt1);
-        if ($result) {
 
-            #Columnas
+        if ($parametros == 'NOT')
+        $result = $bd->ejecutar("execute " . $stmt1);
+        else
+        $result = $bd->ejecutar2($stmt1Prepared, $parametros);
+        if ($result) {
             $columns = explode(',', $columnas);
             $rows1 .= ' <thead><tr>';
             foreach ($columns as $item) {
@@ -137,8 +148,10 @@ class Principal
                         $rows1 .= '<td class="warning">' . utf8_encode($fila[$key]) . '</td>';
                     }
                 }
-                $rows1 .= '<td class="danger"><i id="editar" class="glyphicon glyphicon-pencil" style="color:red; width:10; height:16; onclick="parent.asignarx();"> </i></td>';
-                $rows1 .= ' <td class="danger"><i id="eliminar" class="glyphicon glyphicon-remove" style="color:red; width:10; height:16;"> </i></td>';
+                $rows1 .= '<td class="danger pSave"><i id="editar" class="glyphicon glyphicon-pencil iSave" onclick="jclick()"> </i></td>';
+                $rows1 .= ' <td class="danger pDelete"><i id="eliminar" class="glyphicon glyphicon-remove iDelete" 
+                    onclick="jclick()"
+                    > </i></td>';
                 $rows1 .= '</tr>';
                 $i += 1;
             }
@@ -147,17 +160,27 @@ class Principal
         return $rows1;
     }
 
-    public function tabla_view($id_tabla, $procedimientos, $columnas, $class = 'csstabla', $mostrar_columnas = true, $imprimir = false)
+
+
+
+
+    public function tabla_view($id_tabla, $procedimientos, $columnas, $class = 'csstabla', $mostrar_columnas = true, $imprimir = false,$parametros ='NOT')
     {
         mb_http_output('UTF-8');
         $rows1 = '<table class="table table-hover ' . $class . '"  id="usertable" >';
         define('CHARSET', 'UTF-8');
         header('Content-Type:text/html; charset=utf-8');
-        $stmt1         = "execute " . $procedimientos;
+        $stmt1         =  $procedimientos;
         $stmt1Prepared = sprintf($stmt1, "CURRENT_DATE");
         $bd            = DataBase::getInstance();
         #$bd->set_charset("utf8");
         $result = $bd->ejecutar($stmt1);
+
+       if ($parametros == 'NOT')
+        $result = $bd->ejecutar("execute " . $stmt1);
+        else
+        $result = $bd->ejecutar2($stmt1Prepared, $parametros);
+
         if ($result) {
 
         }

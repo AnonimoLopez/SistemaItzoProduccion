@@ -22,11 +22,6 @@
   <input type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
 </div>
 
-  <label for="form-field-mask-2">Responsable</label>
-<div class="input-group col-sm-8">
-	<span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
-  <input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1">
-</div>
 
   <label for="form-field-mask-2">Dirección</label>
 <div class="input-group col-sm-8">
@@ -34,16 +29,54 @@
   <input type="text" class="form-control" placeholder="Dirección" aria-describedby="basic-addon1">
 </div>
 
-  <label for="form-field-mask-2">Correo</label>
+  <label for="form-field-mask-2">Telefono</label>
+<div class="input-group col-sm-8">
+  <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
+  <input type="text" class="form-control" placeholder="Dirección" aria-describedby="basic-addon1">
+</div>
+
+  <label for="form-field-mask-2">Domicilio</label>
  <div class="input-group col-sm-8">
  	 <span class="input-group-addon" id="sizing-addon2">@</span>
   	<input type="text" class="form-control" placeholder="Correo" aria-describedby="sizing-addon2">
 </div>
 
-  <label for="form-field-mask-2">Celular</label>
+  <label for="form-field-mask-2">Colonia</label>
  <div class="input-group col-sm-8">
  	 <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-phone"></a></span>
   	<input type="text" class="form-control" placeholder="Celular" aria-describedby="sizing-addon2">
+</div>
+
+  <label for="form-field-mask-2">Sector</label>
+ <div class="input-group col-sm-8">
+   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-phone"></a></span>
+    <input type="text" class="form-control" placeholder="Celular" aria-describedby="sizing-addon2">
+</div>
+  <label for="form-field-mask-2">RFC</label>
+ <div class="input-group col-sm-8">
+   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-phone"></a></span>
+    <input type="text" class="form-control" placeholder="Celular" aria-describedby="sizing-addon2">
+</div>
+
+
+  <label for="form-field-mask-2">FAX</label>
+ <div class="input-group col-sm-8">
+   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-phone"></a></span>
+    <input type="text" class="form-control" placeholder="Celular" aria-describedby="sizing-addon2">
+</div>
+
+
+  <label for="form-field-mask-2">Codigo Postal</label>
+ <div class="input-group col-sm-8">
+   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-phone"></a></span>
+    <input type="text" class="form-control" placeholder="Celular" aria-describedby="sizing-addon2">
+</div>
+
+
+  <label for="form-field-mask-2">Mision</label>
+ <div class="input-group col-sm-8">
+   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-phone"></a></span>
+    <input type="text" class="form-control" placeholder="Celular" aria-describedby="sizing-addon2">
 </div>
 
 

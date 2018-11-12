@@ -1,3 +1,2 @@
+select * from cat_carrera
 
-
-alter table
