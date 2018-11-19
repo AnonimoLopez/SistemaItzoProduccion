@@ -4,8 +4,13 @@ $funciones = new Principal();
 
 $tabla = $funciones->tabla("alumnos", "pCAT_ALUMNOS_B", "CVE_PERSONA,NOMBRE,PATERNO,MATERNO,Celular,Correo,MATRICULA");
 
-$comboAsignacionGrado   = $funciones->LlenarSelect("pASIGNACION_GRADO_CARRERA_B", "CVE_ASIGNACION_GRADO_CARRERA", "GRADO_CARRERA", "id_AsignacionGrado", "CARRERA Y GRADO");
-$comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "CVE_ASIGNACION_ALUMNO_GRADO", "GRADO_GENERACION", "id_AsignacionAlumno", "GRUPO Y GENERACION");
+$combocarrera   = $funciones->LlenarSelect("pASIGNACION_ALUMNO_GRUPO_CARRERA_B", "CVE_CARRERA", "CARRERA", "ID_CARRERA", "CARRERA");
+$comboespecialidad = $funciones->LlenarSelect("pASIGNACION_ALUMNO_GRUPO_ESPECIALIDAD_B", "CVE_CARRERA_ESPECIALIDAD", "DESCRIPCION_ESPECIALIDAD", "ID_ESPECIALIDAD", "ESPECIALIDAD");
+
+
+$comoboGrado_Grupo = $funciones->LlenarSelect("pASIGNACION_ALUMNO_GRUPO2_B", "CVE_ASIGNACION_ALUMNO_GRADO", "GRADO_GRUPO_G", "ID_GRADO_GRUPO", "GRADO GRUPO Y GENERACION");
+
+
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +57,7 @@ $comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "
 <div class="input-group col-sm-8">
 
    <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-barcode"></a></span>
-  <input type="text" disabled="false"  class="form-control" placeholder="Matricula" id = 'matricula' aria-describedby="basic-addon1">
+  <input type="text" autocomplete="off"  class="form-control" placeholder="Matricula" id = 'matricula' aria-describedby="basic-addon1">
 </div>
 
 
@@ -60,39 +65,44 @@ $comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "
 <div class="input-group col-sm-8">
 
     <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
-  <input type="text" class="form-control" placeholder="Nombre" id='nombre'required="" aria-describedby="basic-addon1">
+  <input type="text"  autocomplete="off" class="form-control" placeholder="Nombre" id='nombre'required="" aria-describedby="basic-addon1">
 </div>
   <label for="form-field-mask-2">Paterno</label>
 <div class="input-group col-sm-8">
   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
-  <input type="text" class="form-control" placeholder="Paterno" required="" id='paterno' aria-describedby="basic-addon1">
+  <input type="text" autocomplete="off"   class="form-control" placeholder="Paterno" required="" id='paterno' aria-describedby="basic-addon1">
 </div>
 
   <label for="form-field-mask-2">Materno</label>
 <div class="input-group col-sm-8">
   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
-  <input type="text" class="form-control" placeholder="Materno" required="" id='materno' aria-describedby="basic-addon1">
+  <input type="text" autocomplete="off"  class="form-control" placeholder="Materno" required="" id='materno' aria-describedby="basic-addon1">
 </div>
 
   <label for="form-field-mask-2">Correo</label>
  <div class="input-group col-sm-8">
    <span class="input-group-addon" id="sizing-addon2">@</span>
-    <input type="text" class="form-control" placeholder="Correo" id='email' aria-describedby="sizing-addon2">
+    <input type="text"  autocomplete="off"  class="form-control" placeholder="Correo" id='email' aria-describedby="sizing-addon2">
 </div>
 
   <label for="form-field-mask-2">Celular</label>
  <div class="input-group col-sm-8">
    <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-phone"></a></span>
-    <input type="text" class="form-control" placeholder="Celular" id='celular' aria-describedby="sizing-addon2">
+    <input type="text" autocomplete="off"  class="form-control" placeholder="Celular" id='celular' aria-describedby="sizing-addon2">
 </div>
         </div>
         <div class="tab-pane" id="2b">
 
 
-         <?php echo $comboAsignacionGrado ?>
-        <div id='onchange'>
-            <?php echo $comoboAsignacionAlumno ?>
+         <?php echo $combocarrera ?>
+        <div id='div_especialidad'>
+          
         </div>
+
+          <div id='div_grado_grupo'>
+           
+        </div>
+
 
         </div>
       </div>
@@ -116,7 +126,7 @@ $comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "
 
 
 <div id='id_result'>
-  <?php echo $tabla ?>
+ 
 </div>
 </div>
 </form>
@@ -125,6 +135,34 @@ $comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "
 
 
 <script type="text/javascript">
+
+
+
+function onChangeV(id,value){
+   
+ 
+  if (id == "ID_CARRERA"){
+    alert(value);
+     vData  = {'proceso' : '<?echo $funciones->encriptar("ESPECIALIDAD"); ?>', 'id' : value}
+     Asyc('catalogo/cat_alumno_G.php',vData,'div_especialidad');
+
+  }
+   if (id=='ID_ESPECIALIDAD'){
+    vData  = {'proceso' : '<?echo $funciones->encriptar("GRADO_GRUPO_G"); ?>', 'id' : value}
+     Asyc('catalogo/cat_alumno_G.php',vData,'div_grado_grupo');
+   }
+
+   if (id=='ID_GRADO_GRUPO'){
+    vData  = {'proceso' : '<?echo $funciones->encriptar("mostrar"); ?>', 'extra' : value}
+     Asyc('catalogo/cat_alumno_G.php',vData,'id_result');
+   }
+
+}
+
+
+function delete2(id){
+  alert(id);
+}
 
 
       function validar(valor){
@@ -151,6 +189,10 @@ $comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "
           document.getElementById('celular').value = $(this).parents("tr").find("td")[5].innerHTML;
          document.getElementById('matricula').value = $(this).parents("tr").find("td")[6].innerHTML;
 
+        }else if (this.id == 'eliminar'){
+          id = $(this).parents("tr").find("td")[0].innerHTML;
+          descripción =  $(this).parents("tr").find("td")[1].innerHTML;
+          toastr["success"]("¿Seguro que desea eliminar el Registro No. " + id + " con la descripción: "  + descripción  + " ?</br><button type='button' class='btn btn-primary' onclick='delete2(\""+id+"\");' style='width: 45%'>SI</button> <button type='button' class='btn btn btn-danger' style='width:45%'>NO</button>")
         }
   });
 }
@@ -158,7 +200,7 @@ $comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "
   
 
 
-      $("button").click(function() {
+$("button").click(function() {
 
            clave=     document.getElementById('clave').value;
            nombre =document.getElementById('nombre').value;
@@ -166,7 +208,8 @@ $comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "
           materno= document.getElementById('materno').value;
           email = document.getElementById('email').value;
           celular = document.getElementById('celular').value;
-         id_AlumnoGrupo =  document.getElementById('id_AsignacionAlumno').value;
+          MATRICULA = document.getElementById('matricula').value;
+         id_AlumnoGrupo =  document.getElementById('ID_GRADO_GRUPO').value;
 
         if (!validar(nombre)){
           toastr['warning']('Por favor, Ingrese un Nombre');
@@ -183,38 +226,29 @@ $comoboAsignacionAlumno = $funciones->LlenarSelect("pAsignacion_Alumno_Grupo", "
           return false;
         }
 
-
-        if (!validar(id_AlumnoGrupo)){
-          toastr['warning']('Por favor, Seleccione El Grado y Grupo');
-          return false;
-        }
-
-
                  vData       = {
+                 'proceso' : '<?echo $funciones->encriptar("save"); ?>',
                  'Clave'           : clave,
                  'nombre'          : nombre,
                  'paterno'         : paterno,
                  'materno'         : materno,
                  'email'           : email ,
-                 'celular'         : celular, 'GrupoAlumno':id_AlumnoGrupo,
+                 'matricula' : MATRICULA,
+                 'celular'         : celular,
+                  'GrupoAlumno':id_AlumnoGrupo,
                  }
 
-                 Asyc('catalogo/cat_alumno_G.php',vData,'id_result')
-                 $('#usertable').dataTable();
-                 toastr['info']('Se registro Correctamente el Registro');
+                key = '<?echo $funciones->encriptar("mostrar"); ?>';
+                resultado=save_r('catalogo/cat_alumno_G.php',vData, 'clave', key, 'id_result',id_AlumnoGrupo);
+                //Asyc('catalogo/cat_alumno_G.php',vData,'id_result')
+
                  return false;
   });
 
 
-
-                 $('select').on('change', function() {
-                 if (this.id == "id_AsignacionGrado"){
-                 vData  = {id : '<?echo $funciones->encriptar("comboAsignarGrado"); ?>', valor: this.value}
-
-                 Asyc('maestro/php/ajax.php',vData,'onchange')
-                 }
-                 });
 </script>
+
+
 </div>
 </div>
 </div>

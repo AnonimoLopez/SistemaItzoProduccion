@@ -37,8 +37,17 @@ $tabla = $funciones->tabla("alumnos","pCAT_PROYECTOS_B","CVE_PROYECTO,PROYECTO")
 												
               <div class="">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
-                            </div>
+
+                                <button class="btn btn-lg btn-info" id="nuevo" type="submit">
+                    <i class="glyphicon glyphicon-ok-sign">
+                   </i>
+              Nuevo
+            </button>
+<button class="btn btn-lg btn-success" id="guardar" type="submit">
+    <i class="glyphicon glyphicon-ok-sign">
+    </i>
+    Guardar
+</button>
 
 
 <div id='id_result'>
@@ -52,26 +61,44 @@ $tabla = $funciones->tabla("alumnos","pCAT_PROYECTOS_B","CVE_PROYECTO,PROYECTO")
 </div>
 <script type="text/javascript">
 
+
+
+
+function jclick(){
+
       $("i").click(function() {
-        
-        if (this.id == 'editar'){
-
-
+         if (this.id == 'editar'){
           document.getElementById('clave').value = $(this).parents("tr").find("td")[0].innerHTML;
           document.getElementById('proyecto').value = $(this).parents("tr").find("td")[1].innerHTML;
+        }else if (this.id == 'eliminar'){
+          id = $(this).parents("tr").find("td")[0].innerHTML;
+          descripción =  $(this).parents("tr").find("td")[1].innerHTML;
+          toastr["success"]("¿Seguro que desea eliminar el Registro No. " + id + " con la descripción: "  + descripción  + " ?</br><button type='button' class='btn btn-primary' onclick='delete2(\""+id+"\");' style='width: 45%'>SI</button> <button type='button' class='btn btn btn-danger' style='width:45%'>NO</button>")
         }
-        });
+      });
+
+          //$('#usertable').dataTable();
+}
 
 
+function limpiar(){
+    document.getElementById('clave').value ="";
+          document.getElementById('proyecto').value = "";
+}
 
        $("button").click(function() {
+      if (this.id == 'guardar'){
         var proyecto =  document.getElementById('proyecto').value
         var clave =   document.getElementById('clave').value
-            vData = {'proyecto':proyecto,'clave':clave}
-            Asyc('catalogo/cat_proyecto_G.php',vData,'id_result')
-             $('#usertable').dataTable();
-             toastr['info']('Se registro Correctamente el Registro')
+        key = '<?echo $funciones->encriptar("save"); ?>';
+            vData = {'proceso' : key,'proyecto':proyecto,'clave':clave}
+            key = '<?echo $funciones->encriptar("mostrar"); ?>';
+            save_r('catalogo/cat_proyecto_G.php',vData,'clave', key,'id_result')
             return false;
+          }else{
+            limpiar();
+            return false;
+          }
         });
 
 </script>

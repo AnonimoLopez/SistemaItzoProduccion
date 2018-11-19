@@ -22,8 +22,9 @@ $comboGeneracion = $funciones->LlenarSelect("pCAT_GENERACION_B", "CVE_GENERACION
         </div>
         <div class="panel-body">
             <div class="main-content">
-                <div class="main-content-inner">
-                    <div class="col-xs-12 col-sm-8 col--4 ">
+
+                <div class="main-content-inner" class="col-sm-6" style="width: 55%">
+                    <div class="col-xs-12 col-sm-12 col--4 ">
 
                     <label for="form-field-mask-2">
                             Clave
@@ -65,6 +66,10 @@ $comboGeneracion = $funciones->LlenarSelect("pCAT_GENERACION_B", "CVE_GENERACION
 
                     </div>
                 </div>
+                  <div  id='divMateria' class="col-sm-6" style="width: 45%">
+   
+                  </div>
+
             </div>
         </div>
     </div>
@@ -87,9 +92,7 @@ $comboGeneracion = $funciones->LlenarSelect("pCAT_GENERACION_B", "CVE_GENERACION
 
 <div class="container">
   <div class="row">
-    <div  id='divMateria' class="col-sm-6" style="width: 40%">
-   
-    </div>
+
     <div id="id_result" class="col-sm-6" style="width: 56%">
      
     </div>
@@ -108,7 +111,7 @@ $comboGeneracion = $funciones->LlenarSelect("pCAT_GENERACION_B", "CVE_GENERACION
           'cancelClass' : 'btn-sm btn-default',
           locale: {
             applyLabel: 'Aplicar',
-            cancelLabel: 'Cancelar',
+            cancelLabel: 'Canelar',
           }
         })
 function jclick(){
@@ -140,14 +143,21 @@ function delete2(id){
 
 $("button").click(function() {
   if (this.id == "guardar"){
+    alert('ad');
   	if (pasa()){
+      alert('da');
     	key = '<?echo $funciones->encriptar("save"); ?>';
     	id = document.getElementById('clave').value;
-    	especialidad = document.getElementById('Especialidad').value;
-      fk_carrera = document.getElementById('id_carrera').value;
-    	vData = {'proceso' : key, 'id':id, 'especialidad': especialidad, 'fk_carrera' : fk_carrera }
-    	key = '<?echo $funciones->encriptar("extra"); ?>';
-    	resultado=save_r('catalogo/cat_especialidad_G.php',vData, 'clave', key, 'id_result', fk_carrera);
+      grupo = document.getElementById('ID_GRUPO').value;
+      generacion = document.getElementById('ID_GENERACION').value;
+    	fecha = document.getElementById('id-date-range-picker-1').value;
+      asg = document.getElementById('id_grado').value;
+      alert(fecha);
+
+    	vData = {'proceso' : key, 'id':id, 'grupo': grupo, 'generacion' : generacion, 'fecha' : fecha, 'asg' : asg }
+
+    	key = '<?echo $funciones->encriptar("mostrarAlumnoGrupo"); ?>';
+    	resultado=save_r('catalogo/asignacion_alumno_grupo_G.php',vData, 'clave', key, 'id_result','');
     	return false;
   	}
   }else{
@@ -175,6 +185,7 @@ actualizar();
 
 
 function pasa(){
+  return true;
 	 id = document.getElementById('clave').value;
    Especialidad = document.getElementById('Especialidad').value;
 

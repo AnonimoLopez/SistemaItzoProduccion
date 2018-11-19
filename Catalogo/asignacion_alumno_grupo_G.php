@@ -8,11 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     switch ($proceso) {
         case "save":
-            $FK_CARRERA               = $funciones->desencriptar($_POST['fk_carrera']);
-            $CVE_CARRERA_ESPECIALIDAD = addslashes($_POST['id']);
-            $DESCRIPCION_ESPECIALIDAD = addslashes($_POST['especialidad']);
-            $arrayName                = array('@CVE_CARRERA_ESPECIALIDAD' => $CVE_CARRERA_ESPECIALIDAD, "@DESCRIPCION_ESPECIALIDAD" => $DESCRIPCION_ESPECIALIDAD . "", '@FK_CARRERA' => $FK_CARRERA, '@PARAMETRO' => '1000');
-            $result                   = $funciones->guardar_devuelve_id("pXCARRERA_ESPECIALIDAD_G", $arrayName, "@PARAMETRO");
+            $FK_GRUPO            = $funciones->desencriptar($_POST['grupo']);
+            $FK_GENERACION       = $funciones->desencriptar($_POST['generacion']);
+            $FECHA               = $_POST['fecha'];
+            $FK_ASIGNACION_GRUPO = $funciones->desencriptar($_POST['asg']);
+            $id                  = $_POST['id'];
+
+            list($FECHA1, $FECHA2) = split('\-', $FECHA);
+            $arrayName = array('@CVE_ASIGNACION_ALUMNO_GRADO' => $id, "@FK_ASIGNACION_GRADO_CARRERA" => $FK_ASIGNACION_GRUPO . "", '@FK_GENERACION' => $FK_GENERACION, '@FK_GRUPO' => $FK_GRUPO, '@FECHA_INICIO' => trim($FECHA1), '@FECHA_FINAL' => trim($FECHA2), '@PARAMETRO' => '1000');
+            $result    = $funciones->guardar_devuelve_id("pXASIGNACION_ALUMNO_GRUPO_G", $arrayName, "@PARAMETRO");
             echo $result;
             break;
         case "mostrarCarrera":
@@ -29,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         case "mostrarAlumnoGrupo":
             //  $id_carrera = $funciones->desencriptar($_POST['id_grado']);
             //  $parametros = array("@CVE_ASIGNACION_GRADO_CARRERA" => $id_carrera);
-            $tabla = $funciones->tabla_view("CARRERA_ESPECIALIDAD", "pASIGNACION_ALUMNO_GRUPO_B", "CARRERA,ESPECIALIDAD,GRADO,GRUPO,GENERACION");
+            $tabla = $funciones->tabla_view("CARRERA_ESPECIALIDAD", "pASIGNACION_ALUMNO_GRUPO_B", "ID,CARRERA,DESCRIPCION_ESPECIALIDAD,GRADO,GRUPO,GENERACION,FECHA INICIO,FECHA FINAL");
             echo $tabla;
             break;
 
