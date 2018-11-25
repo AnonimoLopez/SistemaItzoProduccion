@@ -23,5 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $tabla = $funciones->tabla("CAT_RESPONSABLE", "pCAT_RESPONSABLES_EMPRESA_B", "ID,RESPONSABLE,DESCRIPCION", $arrayName);
             echo $tabla;
             break;
+        
     }
 }

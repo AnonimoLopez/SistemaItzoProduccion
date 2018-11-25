@@ -2,14 +2,9 @@
 require "../userData/function.php";
 $funciones = new Principal();
 $comboCarrera = $funciones->LlenarSelect("pCAT_ASIGNACION_GC_CARRERA_B", "CVE_CARRERA", "CARRERA", "id_carrera", "CARRERA");
-
-
 $comboGrupo = $funciones->LlenarSelect("pCAT_GRUPO_B", "CVE_GRUPO", "GRUPO", "ID_GRUPO", "GRUPO");
 $comboGeneracion = $funciones->LlenarSelect("pCAT_GENERACION_B", "CVE_GENERACION", "NO_ROMANO", "ID_GENERACION", "GENERACION");
 
-//$comboEspecialidad = $funciones->LlenarSelect("pCAT_ASIGNACION_GC_ESPECIALIDAD_B", "CVE_CARRERA_ESPECIALIDAD", "DESCRIPCION_ESPECIALIDAD", "id_especialidad", "Especialidad");
-
-//$comboGrado = $funciones->LlenarSelect("pCAT_ASIGNACION_GC_GRADO_B", "CVE_ASIGNACION_GRADO_CARRERA", "GRADO", "id_grado", "GRADO");
 
 
 ?>
@@ -41,10 +36,10 @@ $comboGeneracion = $funciones->LlenarSelect("pCAT_GENERACION_B", "CVE_GENERACION
                           <?echo $comboGrupo ?>
                           <?echo $comboCarrera ?>
                         <div id='divEspecialidad'>
-                          <?echo $comboEspecialidad ?>
+                          
                         </div>
                         <div id='divGrado'>
-                          <?echo $comboGrado ?>
+                       
                         </div>
 
 
@@ -113,10 +108,11 @@ $comboGeneracion = $funciones->LlenarSelect("pCAT_GENERACION_B", "CVE_GENERACION
             applyLabel: 'Aplicar',
             cancelLabel: 'Canelar',
           }
-        })
-function jclick(){
+   });
 
-      $("i").click(function() {
+
+  function jclick(){
+     $("i").click(function() {
         if (this.id == 'editar'){
           document.getElementById('clave').value = $(this).parents("tr").find("td")[0].innerHTML;
           document.getElementById('Especialidad').value = $(this).parents("tr").find("td")[1].innerHTML;
@@ -131,19 +127,17 @@ function jclick(){
         	toastr["success"]("¿Seguro que desea eliminar el Registro No. " + id + " con la descripción: "  + descripción  + " ?</br><button type='button' class='btn btn-primary' onclick='delete2(\""+id+"\");' style='width: 45%'>SI</button> <button type='button' class='btn btn btn-danger' style='width:45%'>NO</button>")
         }
       });
-
-          //$('#usertable').dataTable();
-}
+  };
 
 
-function delete2(id){
+  function delete2(id){
 	alert(id);
-}
+  };
 
 
-$("button").click(function() {
-  if (this.id == "guardar"){
-    alert('ad');
+  $("button").click(function() {
+    if (this.id == "guardar"){
+       alert('ad');
   	if (pasa()){
       alert('da');
     	key = '<?echo $funciones->encriptar("save"); ?>';
@@ -165,29 +159,29 @@ $("button").click(function() {
     return false;
   }
 
-});
+  });
 
 
-function validar(valor){
+  function validar(valor){
         if (valor == null || valor.length == 0 || /^\s+$/.test(valor)) {
           return false;
         }else{
           return true;
         }
-}
+  }
 
-function actualizar(){
+  function actualizar(){
     vData  = {'proceso' : '<?echo $funciones->encriptar("mostrarAlumnoGrupo"); ?>'}
    Asyc('catalogo/asignacion_alumno_grupo_G.php',vData,'id_result');
-}
+  }
 
-actualizar();
+  actualizar();
 
 
-function pasa(){
-  return true;
-	 id = document.getElementById('clave').value;
-   Especialidad = document.getElementById('Especialidad').value;
+  function pasa(){
+      return true;
+	    id = document.getElementById('clave').value;
+      Especialidad = document.getElementById('Especialidad').value;
 
    if (!validar(Especialidad)){
    	toastr['warning']('Por favor, Escriba una Carrera');
@@ -195,20 +189,19 @@ function pasa(){
    }
 
    return true;
-}
+  };
 
-function limpiar(){
+  function limpiar(){
     document.getElementById('clave').value = "";
     document.getElementById('Especialidad').value = "";
-}
+  };
 
 
-
-function onChangeV(id,value){
+  function onChangeV(id,value){
    
  
   if (id == "ID_ESPECIALIDAD"){
-    alert(value);
+
      vData  = {'proceso' : '<?echo $funciones->encriptar("comboGrado"); ?>', 'id_carrera' : value}
      Asyc('catalogo/asignacion_alumno_grupo_G.php',vData,'divGrado');
 
@@ -218,13 +211,13 @@ function onChangeV(id,value){
      Asyc('catalogo/asignacion_alumno_grupo_G.php',vData,'divMateria');
    }
 
-}
+  };
 
- $('select').on('change', function() {
-  if (this.id == "id_carrera"){
-     vData  = {'proceso' : '<?echo $funciones->encriptar("comboEspecialidad"); ?>', 'id_carrera' : this.value}
-     Asyc('catalogo/asignacion_alumno_grupo_G.php',vData,'divEspecialidad');
-  }
+  $('select').on('change', function() {
+    if (this.id == "id_carrera"){
+       vData  = {'proceso' : '<?echo $funciones->encriptar("comboEspecialidad"); ?>', 'id_carrera' : this.value}
+      Asyc('catalogo/asignacion_alumno_grupo_G.php',vData,'divEspecialidad');
+    }
 
   if (this.id == "ID_ESPECIALIDAD"){
      vData  = {'proceso' : '<?echo $funciones->encriptar("comboGrado"); ?>', 'id_carrera' : this.value}
@@ -232,10 +225,6 @@ function onChangeV(id,value){
 
   }
 
-  
-
-
-});
-
+  });
 
 </script>

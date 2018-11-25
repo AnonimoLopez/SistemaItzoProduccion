@@ -241,7 +241,7 @@ class Principal
             }
             if ($imprimir == true) {
 
-                $rows1 .= '<td class="danger"><i id="imprimir" class="glyphicon glyphicon-print" style="color:red; width:10; height:16; onclick="asignarx();"> </i></td>';
+                $rows1 .= '<td class="danger"><i id="imprimir" class="glyphicon glyphicon-print" style="color:red; width:10; height:16;" onclick="jclick();"> </i></td>';
             }
         }
         $rows1 .= '</tr>';

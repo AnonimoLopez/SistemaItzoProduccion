@@ -118,7 +118,16 @@ $comoboGrado_Grupo = $funciones->LlenarSelect("pASIGNACION_ALUMNO_GRUPO2_B", "CV
 </div>
   <div class="">
                                 <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Guardar</button>
+                     <button class="btn btn-lg btn-info" id="nuevo" type="submit">
+    <i class="glyphicon glyphicon-ok-sign">
+    </i>
+    Nuevo
+</button>
+<button class="btn btn-lg btn-success" id="guardar" type="submit">
+    <i class="glyphicon glyphicon-ok-sign">
+    </i>
+    Guardar
+</button>
   </div>
 </div>
 
@@ -142,7 +151,7 @@ function onChangeV(id,value){
    
  
   if (id == "ID_CARRERA"){
-    alert(value);
+
      vData  = {'proceso' : '<?echo $funciones->encriptar("ESPECIALIDAD"); ?>', 'id' : value}
      Asyc('catalogo/cat_alumno_G.php',vData,'div_especialidad');
 
@@ -202,6 +211,8 @@ function delete2(id){
 
 $("button").click(function() {
 
+  if (this.id == "guardar"){
+
            clave=     document.getElementById('clave').value;
            nombre =document.getElementById('nombre').value;
           paterno = document.getElementById('paterno').value;
@@ -243,8 +254,22 @@ $("button").click(function() {
                 //Asyc('catalogo/cat_alumno_G.php',vData,'id_result')
 
                  return false;
+        }else{
+    limpiar();
+    return false;
+  }
   });
 
+function limpiar(){
+          document.getElementById('clave').value = "";
+          document.getElementById('nombre').value = "";
+          document.getElementById('paterno').value = "";
+          document.getElementById('materno').value = "";
+          document.getElementById('email').value = "";
+          document.getElementById('celular').value = "";
+          document.getElementById('matricula').value = "";
+
+}
 
 </script>
 

@@ -70,11 +70,11 @@ $menu .= '</li>';
 <html lang="en">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
 		<meta charset="utf-8" />
 		<meta charset="ISO-8859-1">
 		<title>ITZO</title>
-
+ 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
@@ -99,17 +99,6 @@ $menu .= '</li>';
 		<link rel="stylesheet" href="static/CSS/style.css" />
 
 
-			<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-		
-			<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-
-
-
-		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="static/assets/css/ace-ie.min.css" />
-		<![endif]-->
-
-		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
 		<script src="static/assets/js/ace-extra.min.js"></script>
@@ -121,6 +110,8 @@ $menu .= '</li>';
 		<script src="static/assets/js/html5shiv.min.js"></script>
 		<script src="static/assets/js/respond.min.js"></script>
 		<![endif]-->
+
+
 
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="static/assets/css/bootstrap.min.css" />
@@ -145,11 +136,18 @@ $menu .= '</li>';
 		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
-		<script src="static/assets/js/ace-extra.min.js"></script>
-	<script src="ajax/server.js"></script>
+	
 
-         <link rel="stylesheet" type="text/css" href="static/DataTables/datatables.min.css"/>
-		<link rel="stylesheet" href="static/pacejs/css/pace-theme-flash.css">
+        
+
+<!-- Contenidos personales JS-->
+<script src="static/assets/js/ace-extra.min.js"></script>
+<script src="ajax/server.js"></script>
+ <link rel="stylesheet" type="text/css" href="static/DataTables/datatables.min.css"/>
+	
+<!--End fin -->
+
+	<link rel="stylesheet" href="static/pacejs/css/pace-theme-flash.css">
 
 
 	</head>
@@ -639,24 +637,16 @@ $menu .= '</li>';
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
-		</div><!-- /.main-container -->
-
-		<!-- basic scripts -->
-
-		<!--[if !IE]> -->
+		</div>
 
 
-		<!-- <![endif]-->
+	
+		<script src="static/assets/js/jquery-2.1.4.min.js"></script>
+		<script src="static/notificaciones/toastr.js"></script>
 
-		<!--[if IE]>
-<script src="static/assets/js/jquery-1.11.3.min.js"></script>
 
-
-<![endif]-->
-	<script src="static/assets/js/jquery-2.1.4.min.js"></script>
-	<script src="static/notificaciones/toastr.js"></script>
-		      <script type="text/javascript" src="static/DataTables/datatables.min.js"></script>
-  <script type="text/javascript" src="static/pacejs/js/pace.js"></script>
+		<script type="text/javascript" src="static/DataTables/datatables.min.js"></script>
+  		<script type="text/javascript" src="static/pacejs/js/pace.js"></script>
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='static/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
@@ -686,13 +676,6 @@ $menu .= '</li>';
 		<script src="static/assets/js/bootstrap-tag.min.js"></script>
 
 
-		<script src="static/assets/js/jquery-ui.custom.min.js"></script>
-		<script src="static/assets/js/jquery.ui.touch-punch.min.js"></script>
-		<script src="static/assets/js/jquery.easypiechart.min.js"></script>
-		<script src="static/assets/js/jquery.sparkline.index.min.js"></script>
-		<script src="static/assets/js/jquery.flot.min.js"></script>
-		<script src="static/assets/js/jquery.flot.pie.min.js"></script>
-		<script src="static/assets/js/jquery.flot.resize.min.js"></script>
 
 		<!-- ace scripts -->
 		<script src="static/assets/js/ace-elements.min.js"></script>
@@ -731,10 +714,7 @@ $menu .= '</li>';
 				});
 
 
-			  //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
-			  //but sometimes it brings up errors with normal resize event handlers
-			  $.resize.throttleWindow = false;
-
+		
 			  var placeholder = $('#piechart-placeholder').css({'width':'90%' , 'min-height':'150px'});
 			  var data = [
 				{ label: "social networks",  data: 38.7, color: "#68BC31"},
@@ -743,43 +723,10 @@ $menu .= '</li>';
 				{ label: "direct traffic",  data: 18.6, color: "#DA5430"},
 				{ label: "other",  data: 10, color: "#FEE074"}
 			  ]
-			  function drawPieChart(placeholder, data, position) {
-			 	  $.plot(placeholder, data, {
-					series: {
-						pie: {
-							show: true,
-							tilt:0.8,
-							highlight: {
-								opacity: 0.25
-							},
-							stroke: {
-								color: '#fff',
-								width: 2
-							},
-							startAngle: 2
-						}
-					},
-					legend: {
-						show: true,
-						position: position || "ne",
-						labelBoxBorderColor: null,
-						margin:[-30,15]
-					}
-					,
-					grid: {
-						hoverable: true,
-						clickable: true
-					}
-				 })
-			 }
-			 drawPieChart(placeholder, data);
+			
+			
 
-			 /**
-			 we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
-			 so that's not needed actually.
-			 */
-			 placeholder.data('chart', data);
-			 placeholder.data('draw', drawPieChart);
+
 
 
 			  //pie chart tooltip example
@@ -825,33 +772,7 @@ $menu .= '</li>';
 				}
 
 
-				var sales_charts = $('#sales-charts').css({'width':'100%' , 'height':'220px'});
-				$.plot("#sales-charts", [
-					{ label: "Domains", data: d1 },
-					{ label: "Hosting", data: d2 },
-					{ label: "Services", data: d3 }
-				], {
-					hoverable: true,
-					shadowSize: 0,
-					series: {
-						lines: { show: true },
-						points: { show: true }
-					},
-					xaxis: {
-						tickLength: 0
-					},
-					yaxis: {
-						ticks: 10,
-						min: -2,
-						max: 2,
-						tickDecimals: 3
-					},
-					grid: {
-						backgroundColor: { colors: [ "#fff", "#fff" ] },
-						borderWidth: 1,
-						borderColor:'#555'
-					}
-				});
+
 
 
 				$('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
@@ -916,7 +837,7 @@ $menu .= '</li>';
 					else $(this).removeClass('dropup');
 				});
 
-			})
+			});
 
 		$('a').click( function(e) {
 
@@ -930,9 +851,12 @@ $menu .= '</li>';
 					return false;
 				}
 			  //return true;
-			}
+		});
 
-			);
+		$('[data-rel=tooltip]').tooltip({container:'body'});
+	    $('[data-rel=popover]').popover({container:'body'});
+			
+
 		</script>
 	</body>
 </html>

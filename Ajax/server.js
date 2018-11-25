@@ -33,7 +33,7 @@ function Asyc(vUrl, vData, vidDiv) {
         success: function(response) {
             //mostramos salida del PHP
             jQuery("#" + vidDiv).html(response);
-            $('#usertable').dataTable();
+            //$('#usertable').dataTable();
         },
         // código a ejecutar si la petición falla;
         // son pasados como argumentos a la función

@@ -1,4 +1,6 @@
-v<?php
+<?php
+require "../userData/function.php";
+$funciones = new Principal();
 ?>
 <form>
 <div class="panel panel-primary">
@@ -18,7 +20,7 @@ v<?php
       <div class="tab-content clearfix">
         <div class="tab-pane active" id="1b">
 
-    <label for="form-field-mask-2">Clave del Alumno</label>
+    <label for="form-field-mask-2">Clave del maestro</label>
     <div class="input-group col-sm-8">
       <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
       <input type="text" class="form-control" placeholder="Auto Generado" id='clave' disabled="disabled" aria-describedby="basic-addon1">
@@ -73,11 +75,12 @@ v<?php
 </div>
 </div>
 
-<div id='id_result'>
+
+</div>
+</div>
+<div id='id_result' >
  
 </div>
-</div>
-
 </form>
 
 
@@ -98,6 +101,11 @@ function delete2(id){
       }
 
 
+function actualizar(){
+    vData  = {'proceso' : '<?echo $funciones->encriptar("mostrar"); ?>'}
+   Asyc('catalogo/cat_maestro_G.php',vData,'id_result');
+}
+actualizar();
 
 
  function jclick() { 
@@ -112,7 +120,7 @@ function delete2(id){
           document.getElementById('email').value = $(this).parents("tr").find("td")
           [4].innerHTML;
           document.getElementById('celular').value = $(this).parents("tr").find("td")[5].innerHTML;
-         document.getElementById('matricula').value = $(this).parents("tr").find("td")[6].innerHTML;
+     
 
         }else if (this.id == 'eliminar'){
           id = $(this).parents("tr").find("td")[0].innerHTML;
@@ -127,14 +135,15 @@ function delete2(id){
 
 $("button").click(function() {
 
+
+ if (this.id == "guardar"){
            clave=     document.getElementById('clave').value;
            nombre =document.getElementById('nombre').value;
           paterno = document.getElementById('paterno').value;
           materno= document.getElementById('materno').value;
           email = document.getElementById('email').value;
           celular = document.getElementById('celular').value;
-          MATRICULA = document.getElementById('matricula').value;
-         id_AlumnoGrupo =  document.getElementById('ID_GRADO_GRUPO').value;
+  
 
         if (!validar(nombre)){
           toastr['warning']('Por favor, Ingrese un Nombre');
@@ -158,18 +167,31 @@ $("button").click(function() {
                  'paterno'         : paterno,
                  'materno'         : materno,
                  'email'           : email ,
-                 'matricula' : MATRICULA,
+             
                  'celular'         : celular,
-                  'GrupoAlumno':id_AlumnoGrupo,
+               
                  }
 
                 key = '<?echo $funciones->encriptar("mostrar"); ?>';
-                resultado=save_r('catalogo/cat_alumno_G.php',vData, 'clave', key, 'id_result',id_AlumnoGrupo);
+                resultado=save_r('catalogo/cat_maestro_G.php',vData, 'clave', key, 'id_result');
                 //Asyc('catalogo/cat_alumno_G.php',vData,'id_result')
 
                  return false;
+                   }else{
+    limpiar();
+    return false;
+  }
   });
 
+
+function limpiar(){
+          document.getElementById('clave').value = "";
+          document.getElementById('nombre').value = "";
+          document.getElementById('paterno').value = "";
+          document.getElementById('materno').value = "";
+          document.getElementById('email').value = "";
+          document.getElementById('celular').value = "";
+}
 
 </script>
 
