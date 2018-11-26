@@ -68,7 +68,7 @@ if ($id != ""){
 	$arrayName = array('@CVE_NO_CONTROL' => $id,);
 }
 
-$result = $funciones->querySelect("pPROYECTO_EMPRESA_B", $arrayName);
+$result = $funciones->querySelect("pSOLICITUD_ESTADI_B", $arrayName);
 if ($result) {
     while ($fila = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
         $nombre_empresa  = utf8_encode($fila['NOMBRE']);
@@ -82,11 +82,11 @@ if ($result) {
         $telefono        =  utf8_encode($fila['TELEFONO']);
         $mision          =  utf8_encode($fila['MISION']);
         $titular_empresa =  utf8_encode($fila['RESPONSABLE']);
-        $Asesor          =  utf8_encode($fila['Asesor_Externo']);
+        $Asesor          =  utf8_encode($fila['RESPONSABLE']);
         $firma_acuerdo   =  utf8_encode($fila['RESPONSABLE']);
         $nombre_proyecto =  utf8_encode($fila['PROYECTO']);
         $opcion_elejida =  utf8_encode($fila['OPCION_ELEJIDA']);
-        $periodo =  utf8_encode($fila['PERIODO']);
+        $periodo =  utf8_encode($fila['FECHA_INICIO']) . " - " . utf8_encode($fila['FECHA_FINAL']);
         $noIntengrantes =  utf8_encode($fila['No_Integrantes']);
     }
 }

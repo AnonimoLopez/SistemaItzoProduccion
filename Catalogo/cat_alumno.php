@@ -19,6 +19,45 @@ $comoboGrado_Grupo = $funciones->LlenarSelect("pASIGNACION_ALUMNO_GRUPO2_B", "CV
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
   </header>
 
+<style type="text/css">
+      .container{
+        height: 100%;
+        align-content: center;
+       }
+
+       .image_outer_container{
+        margin-top: auto;
+        margin-bottom: auto;
+        border-radius: 50%;
+        position: relative;
+       }
+
+       .image_inner_container{
+        border-radius: 50%;
+        padding: 5px;
+       
+         }
+       .image_inner_container img{
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 5px solid white;
+       }
+
+       .image_outer_container .green_icon{
+         background-color: #4cd137;
+         position: absolute;
+         right: 30px;
+         bottom: 10px;
+         height: 30px;
+         width: 30px;
+         border:5px solid white;
+         border-radius: 50%;
+       }
+
+</style>
+
+
   <body class="no-skin">
     <div class="main-container ace-save-state" id="main-container">
       <script type="text/javascript">
@@ -34,27 +73,34 @@ $comoboGrado_Grupo = $funciones->LlenarSelect("pASIGNACION_ALUMNO_GRUPO2_B", "CV
 
 <div class="main-content">
 <div class="main-content-inner">
-<div class="col-xs-12 col-sm-8 col--4 " >
+<div class="col-xs-12 col-sm-12 col--4 " >
 <ul  class="nav nav-pills">
       <li class="active">
         <a  href="#1b" data-toggle="tab">Información personal</a>
       </li>
       <li><a href="#2b" data-toggle="tab">Información Acedemica</a>
       </li>
+       <li><a href="#3b" data-toggle="tab">Documentos</a>
+      </li>
 </ul>
 
       <div class="tab-content clearfix">
         <div class="tab-pane active" id="1b">
 
+
+
+
+
+<div class="col-sm-6" style="width: 70%" >
     <label for="form-field-mask-2">Clave del Alumno</label>
-    <div class="input-group col-sm-8">
+    <div class="input-group col-sm-12">
       <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
       <input type="text" class="form-control" placeholder="Auto Generado" id='clave' disabled="disabled" aria-describedby="basic-addon1">
     </div>
 
 
   <label for="form-field-mask-2">Matricula</label>
-<div class="input-group col-sm-8">
+<div class="input-group col-sm-12">
 
    <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-barcode"></a></span>
   <input type="text" autocomplete="off"  class="form-control" placeholder="Matricula" id = 'matricula' aria-describedby="basic-addon1">
@@ -62,35 +108,56 @@ $comoboGrado_Grupo = $funciones->LlenarSelect("pASIGNACION_ALUMNO_GRUPO2_B", "CV
 
 
  <label for="form-field-mask-2">Nombre</label>
-<div class="input-group col-sm-8">
+<div class="input-group col-sm-12">
 
     <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
   <input type="text"  autocomplete="off" class="form-control" placeholder="Nombre" id='nombre'required="" aria-describedby="basic-addon1">
 </div>
   <label for="form-field-mask-2">Paterno</label>
-<div class="input-group col-sm-8">
+<div class="input-group col-sm-12">
   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
   <input type="text" autocomplete="off"   class="form-control" placeholder="Paterno" required="" id='paterno' aria-describedby="basic-addon1">
 </div>
 
   <label for="form-field-mask-2">Materno</label>
-<div class="input-group col-sm-8">
+<div class="input-group col-sm-12">
   <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-user"></a></span>
   <input type="text" autocomplete="off"  class="form-control" placeholder="Materno" required="" id='materno' aria-describedby="basic-addon1">
 </div>
 
   <label for="form-field-mask-2">Correo</label>
- <div class="input-group col-sm-8">
+ <div class="input-group col-sm-12">
    <span class="input-group-addon" id="sizing-addon2">@</span>
     <input type="text"  autocomplete="off"  class="form-control" placeholder="Correo" id='email' aria-describedby="sizing-addon2">
 </div>
 
   <label for="form-field-mask-2">Celular</label>
- <div class="input-group col-sm-8">
+ <div class="input-group col-sm-12">
    <span class="input-group-addon" id="sizing-addon2"><a class="glyphicon glyphicon-phone"></a></span>
     <input type="text" autocomplete="off"  class="form-control" placeholder="Celular" id='celular' aria-describedby="sizing-addon2">
 </div>
         </div>
+     
+<div class="col-sm-4" style="width: 10%">
+
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="image_outer_container">
+        <div class="green_icon"></div>
+        <div class="image_inner_container">
+          <img src="https://i0.wp.com/tricksmaze.com/wp-content/uploads/2017/04/Stylish-Girls-Profile-Pictures-36.jpg?resize=300%2C300&ssl=1">
+        </div>
+      </div>
+    </div>
+    <input type="file" id="ejemplo_archivo_1"> 
+    <p class="help-block">Suba la Imagen del Alumno</p>
+  </div>
+
+</div>
+
+
+  </div>
+
         <div class="tab-pane" id="2b">
 
 
@@ -105,7 +172,16 @@ $comoboGrado_Grupo = $funciones->LlenarSelect("pASIGNACION_ALUMNO_GRUPO2_B", "CV
 
 
         </div>
+              <div class="tab-pane" id="3b">
+
+<input type="checkbox" name="vehicle1" value="Bike">Creditos<br>
+<input type="checkbox" name="vehicle2" value="Car">Servicio Social<br>
+<input type="checkbox" name="vehicle2" value="Car">Ingles<br>
+<input type="checkbox" name="vehicle2" value="Car">Seguro<br>
+
       </div>
+      </div>
+ 
   </div>
 
 

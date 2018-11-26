@@ -16,7 +16,7 @@ $comboCargos = $funciones->LlenarSelect("pCAT_CARGOS_B", "CVE_CARGO", "DESCRIPCI
 <form>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title" align='center'>EMPRESA</h3>
+    <h3 class="panel-title" align='center'>ASESORES</h3>
   </div>
   <div class="panel-body" >
 

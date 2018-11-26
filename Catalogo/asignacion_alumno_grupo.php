@@ -8,11 +8,12 @@ $comboGeneracion = $funciones->LlenarSelect("pCAT_GENERACION_B", "CVE_GENERACION
 
 
 ?>
+
 <form action="onsubmit" method="POST">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 align="center" class="panel-title">
-                CARRERA
+                CREACIÓN DEL GRUPO DE ESTADÍA
             </h3>
         </div>
         <div class="panel-body">

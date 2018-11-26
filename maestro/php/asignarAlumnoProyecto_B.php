@@ -26,7 +26,7 @@ $comboproyecto = $funciones->LlenarSelect("pCAT_PROYECTOS_B", "CVE_PROYECTO", "P
 
 
 
-    <h3 class="panel-title" align='center'>ASIGNAR MAESTRO A MATERIA</h3>
+    <h3 class="panel-title" align='center'>SOLICITUD DE RESIDENCIA</h3>
   </div>
   <div class="panel-body" >
 
@@ -38,9 +38,23 @@ $comboproyecto = $funciones->LlenarSelect("pCAT_PROYECTOS_B", "CVE_PROYECTO", "P
 
 			<div class="main-content">
 				<div class="main-content-inner">
-				  <div class="col-xs-12 col-sm-6 col--4 " >
-  <label for="form-field-mask-2">
-     NO CONTROL
+				  <div class="col-xs-12 col-sm-12 col--4 " >
+
+            <ul  class="nav nav-pills">
+      <li class="active">
+        <a  href="#1b" data-toggle="tab">SOLICITUD DE ESTADIA PROFESIONAL</a>
+      </li>
+      <li><a href="#2b" data-toggle="tab">REPORTES ENTREGADO</a>
+      
+      
+      </li>
+</ul>
+
+
+ <div class="tab-content clearfix">
+  <div class="tab-pane active" id="1b">
+                <label for="form-field-mask-2">
+                       NO CONTROL
                         </label>
                         <div class="input-group col-sm-12">
                             <span class="input-group-addon" id="sizing-addon2">
@@ -53,7 +67,8 @@ $comboproyecto = $funciones->LlenarSelect("pCAT_PROYECTOS_B", "CVE_PROYECTO", "P
 
 
          <?php echo $combocarrera ?>
-        <div id='div_especialidad'>
+
+ <div id='div_especialidad'>
           
         </div>
 
@@ -65,26 +80,33 @@ $comboproyecto = $funciones->LlenarSelect("pCAT_PROYECTOS_B", "CVE_PROYECTO", "P
            
            </div>
 
-												
-
-												<div id='id_MateriaSelect'>
-													<?php echo $comboEmpresa ?>
-												</div>
+                      <div id='id_MateriaSelect'>
+                          <?php echo $comboEmpresa ?>
+                        </div>
 
                         <div id='divAsesor'>
                         </div>
 
 
 
-											    <?php echo $comboMaestro ?>
-											    <?php echo $comboproyecto ?>
+                          <?php echo $comboMaestro ?>
+                          <?php echo $comboproyecto ?>
 
 
-					</div>
+</div>
+ <div class="tab-pane" id="2b">
+<input type="checkbox" name="vehicle1" value="Bike">REPORTE 1<br>
+      <input type="checkbox" name="vehicle2" value="Car">REPORTE 2<br>
+      <input type="checkbox" name="vehicle2" value="Car">REPORTE 3<br>
+      <input type="checkbox" name="vehicle2" value="Car">REPORTE 4<br>
+    </div>
 
-			</div>
+</div>    
 
-		</div>
+</div>
+    
+</div>
+
 
 <button class="btn btn-lg btn-info" id="nuevo" type="submit">
     <i class="glyphicon glyphicon-ok-sign">
@@ -98,6 +120,8 @@ $comboproyecto = $funciones->LlenarSelect("pCAT_PROYECTOS_B", "CVE_PROYECTO", "P
     Guardar
 </button>
 
+</div>
+  
 </div>
 
 <div id='id_result' style="overflow: scroll;">
@@ -177,7 +201,7 @@ function onChangeV(id,value){
 }
 
 $("i").click(function() {
-           alert('reta');
+           alert  
      if (this.id == 'imprimir'){
         alert('popop');
             id=$(this).parents("tr").find("td")[0].innerHTML
