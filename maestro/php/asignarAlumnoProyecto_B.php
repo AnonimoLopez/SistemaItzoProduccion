@@ -103,6 +103,8 @@ $comboproyecto = $funciones->LlenarSelect("pCAT_PROYECTOS_B", "CVE_PROYECTO", "P
 
 </div>    
 
+<input type="checkbox" name="vehicle2" value="Car">Termino COrrectamente la estadía profesional<br>
+   
 </div>
     
 </div>

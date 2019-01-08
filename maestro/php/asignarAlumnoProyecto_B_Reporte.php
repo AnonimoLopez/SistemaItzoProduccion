@@ -165,9 +165,9 @@ function onChangeV(id,value){
 
  function jclick() { 
   $("i").click(function() {
-           alert('reta');
+           //alert('reta');
      if (this.id == 'imprimir'){
-        alert('popop');
+        //alert('popop');
             id=$(this).parents("tr").find("td")[0].innerHTML
             window.open('reportes/Solicitud_Residencia_Profeccionales.php?id=' + id,'Reporte','location=no,menubar=no,status=no,toolbar=no');
             e.preventDefault();   
